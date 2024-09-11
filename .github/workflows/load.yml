@@ -1,0 +1,48 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Cargar iris
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  schedule:
+    - cron: '0 15 * * *'  # Runs at 5.00 AM every day
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      # Definir la variable nombre para que la pase al siguiente paso
+      - name: Definir variable
+        run: echo "USERNAME=${{ github.actor }}" >> $GITHUB_ENV
+
+      # Instalaciones
+      - name: installs
+        run: pip install -r requirements.txt
+
+      # Runs script
+      - name: Correr python
+        run: python load.py
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.email "vannebunny@gmail.com"
+          git config --global user.name "mvgomezl"
+          git add df.csv  # Replace with your chosen file format
+          git commit -m "Saved DataFrame"
+          git push
