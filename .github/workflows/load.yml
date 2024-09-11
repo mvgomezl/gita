@@ -41,8 +41,8 @@ jobs:
 
       - name: Commit and Push Changes
         run: |
-          git config --global user.name 'GitHub Actions'
-          git config --global user.email 'actions@github.com'
+          git config --global user.name 'mvgomezl'
+          git config --global user.email 'vanessbunny@gmail.com'
           git add df.csv  # Replace with your chosen file format
           git commit -m "Saved DataFrame"
           git push
