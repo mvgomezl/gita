@@ -5,8 +5,12 @@ from sklearn.datasets import load_iris
 iris = load_iris()
 
 # Convierte los datos a un DataFrame de pandas
-df = pd.DataFrame(data=iris.data, columns=iris.feature_names)
-df['target'] = iris.target
+df_new = pd.DataFrame(data=iris.data, columns=iris.feature_names)
+df_new['target'] = iris.target
+
+df_old = pd.read_csv('df.csv', sep = ',', decimal = '.', header = 0, encoding = 'utf-8')
+
+df = pd.concat([df_old, df_new], ignore_index=True)
 
 df.to_csv('df.csv', encoding = 'utf-8-sig', index = False)
 
