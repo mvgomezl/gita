@@ -1,5 +1,9 @@
 import pandas as pd
 from sklearn.datasets import load_iris
+import datetime
+
+ahora = datetime.datetime.now()
+print(f'La fecha es: {ahora}')
 
 # Carga el conjunto de datos
 iris = load_iris()
