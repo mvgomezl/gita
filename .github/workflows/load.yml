@@ -10,7 +10,7 @@ on:
   pull_request:
     branches: [ "main" ]
   schedule:
-    - cron: '25 3 * * *'  # Runs at 5.00 AM every day
+    - cron: '25 3,15 * * *'  # Runs at 5.00 AM every day
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
